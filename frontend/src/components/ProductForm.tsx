@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
 import type { NuevoProducto, Producto } from "../types/producto";
 import type { Categoria } from "../types/categoria";
+import ImageLightbox from "./ImageLightbox";
 
 interface ProductFormProps {
   categorias: Categoria[];
@@ -41,6 +42,7 @@ const ProductForm = ({
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [imagenRota, setImagenRota] = useState(false);
+  const [imagenAmpliada, setImagenAmpliada] = useState(false);
 
   useEffect(() => {
     setForm(productoEnEdicion ? productoAFormulario(productoEnEdicion) : valoresIniciales);
@@ -60,6 +62,7 @@ const ProductForm = ({
 
     if (name === "imagenUrl") {
       setImagenRota(false);
+      setImagenAmpliada(false);
     }
 
     setForm((prev) => ({
@@ -167,7 +170,7 @@ const ProductForm = ({
       </label>
 
       {form.imagenUrl && (
-        <div className="image-preview">
+        <div className={`image-preview${imagenRota ? "" : " ampliable"}`}>
           {imagenRota ? (
             <p className="image-preview-error">No se pudo cargar la imagen desde esa URL.</p>
           ) : (
@@ -175,9 +178,18 @@ const ProductForm = ({
               src={form.imagenUrl}
               alt="Vista previa del llavero"
               onError={() => setImagenRota(true)}
+              onClick={() => setImagenAmpliada(true)}
             />
           )}
         </div>
+      )}
+
+      {imagenAmpliada && form.imagenUrl && !imagenRota && (
+        <ImageLightbox
+          src={form.imagenUrl}
+          alt="Vista previa del llavero"
+          onClose={() => setImagenAmpliada(false)}
+        />
       )}
 
       {error && <p className="error">{error}</p>}

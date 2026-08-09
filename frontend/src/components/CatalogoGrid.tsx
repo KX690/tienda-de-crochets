@@ -1,4 +1,6 @@
+import { useState } from "react";
 import type { Producto } from "../types/producto";
+import ImageLightbox from "./ImageLightbox";
 
 interface CatalogoGridProps {
   productos: Producto[];
@@ -13,6 +15,8 @@ const formatoGuarani = new Intl.NumberFormat("es-PY", {
 
 // Muestra el catálogo de llaveros en modo solo lectura (sin acciones de edición)
 const CatalogoGrid = ({ productos, cargando }: CatalogoGridProps) => {
+  const [productoAmpliado, setProductoAmpliado] = useState<Producto | null>(null);
+
   if (cargando) {
     return <p className="estado-info">Cargando catálogo...</p>;
   }
@@ -25,7 +29,10 @@ const CatalogoGrid = ({ productos, cargando }: CatalogoGridProps) => {
     <div className="product-list">
       {productos.map((producto) => (
         <div className="product-card" key={producto.id}>
-          <div className="product-card-img">
+          <div
+            className={`product-card-img${producto.imagenUrl ? " ampliable" : ""}`}
+            onClick={() => producto.imagenUrl && setProductoAmpliado(producto)}
+          >
             {producto.imagenUrl ? (
               <img src={producto.imagenUrl} alt={producto.nombre} />
             ) : (
@@ -45,6 +52,14 @@ const CatalogoGrid = ({ productos, cargando }: CatalogoGridProps) => {
           </div>
         </div>
       ))}
+
+      {productoAmpliado?.imagenUrl && (
+        <ImageLightbox
+          src={productoAmpliado.imagenUrl}
+          alt={productoAmpliado.nombre}
+          onClose={() => setProductoAmpliado(null)}
+        />
+      )}
     </div>
   );
 };

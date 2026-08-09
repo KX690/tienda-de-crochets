@@ -1,4 +1,6 @@
+import { useState } from "react";
 import type { Producto } from "../types/producto";
+import ImageLightbox from "./ImageLightbox";
 
 interface ProductListProps {
   productos: Producto[];
@@ -15,6 +17,8 @@ const formatoGuarani = new Intl.NumberFormat("es-PY", {
 
 // Muestra el catálogo de llaveros de crochet en formato de tarjetas
 const ProductList = ({ productos, cargando, onEditar, onEliminar }: ProductListProps) => {
+  const [productoAmpliado, setProductoAmpliado] = useState<Producto | null>(null);
+
   if (cargando) {
     return <p className="estado-info">Cargando catálogo...</p>;
   }
@@ -27,7 +31,10 @@ const ProductList = ({ productos, cargando, onEditar, onEliminar }: ProductListP
     <div className="product-list">
       {productos.map((producto) => (
         <div className="product-card" key={producto.id}>
-          <div className="product-card-img">
+          <div
+            className={`product-card-img${producto.imagenUrl ? " ampliable" : ""}`}
+            onClick={() => producto.imagenUrl && setProductoAmpliado(producto)}
+          >
             {producto.imagenUrl ? (
               <img src={producto.imagenUrl} alt={producto.nombre} />
             ) : (
@@ -53,6 +60,14 @@ const ProductList = ({ productos, cargando, onEditar, onEliminar }: ProductListP
           </div>
         </div>
       ))}
+
+      {productoAmpliado?.imagenUrl && (
+        <ImageLightbox
+          src={productoAmpliado.imagenUrl}
+          alt={productoAmpliado.nombre}
+          onClose={() => setProductoAmpliado(null)}
+        />
+      )}
     </div>
   );
 };
