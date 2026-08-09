@@ -10,4 +10,13 @@ const api = axios.create({
   },
 });
 
+// Incluye automáticamente el token JWT guardado en las peticiones a rutas protegidas
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 export default api;

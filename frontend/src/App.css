@@ -327,3 +327,308 @@ button.peligro {
 .stock {
   color: #7a5c4f;
 }
+
+.exito {
+  color: #3f7d3a;
+  font-size: 0.85rem;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  background: #fff7f0;
+  border-bottom: 1px solid #f0d9c8;
+  padding: 0.85rem 1.5rem;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: #b5563f;
+}
+
+.navbar-links,
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.navbar a {
+  color: #8a5638;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.navbar a.active {
+  color: #b5563f;
+  font-weight: 700;
+}
+
+.navbar-saludo {
+  font-size: 0.85rem;
+  color: #5a4638;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.navbar-user button {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+/* Auth pages */
+.auth-page {
+  max-width: 380px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+.auth-form {
+  background: #fff7f0;
+  border: 1px solid #f0d9c8;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.auth-form h2 {
+  margin: 0 0 0.25rem 0;
+  color: #b5563f;
+}
+
+.auth-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+  gap: 0.3rem;
+  color: #5a4638;
+}
+
+.auth-form input {
+  padding: 0.55rem 0.65rem;
+  border-radius: 8px;
+  border: 1px solid #e0c4ac;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.auth-form button {
+  margin-top: 0.4rem;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #b5563f;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-alt {
+  font-size: 0.85rem;
+  color: #7a5c4f;
+  text-align: center;
+  margin: 0;
+}
+
+/* Carrito de pedido */
+.carrito-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  background: #fffaf5;
+  border: 1px solid #f0d9c8;
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+}
+
+.carrito-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.carrito-item button {
+  border: none;
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.carrito-total {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px dashed #e0c4ac;
+  padding-top: 0.4rem;
+  margin-top: 0.2rem;
+  color: #b5563f;
+}
+
+/* Pedidos */
+.pedido-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.pedido-card {
+  background: #fffaf5;
+  border: 1px solid #f0d9c8;
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.pedido-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  color: #4a3527;
+}
+
+.pedido-fecha {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #7a5c4f;
+}
+
+.pedido-items {
+  margin: 0.2rem 0;
+  padding-left: 1.1rem;
+  font-size: 0.85rem;
+  color: #5a4638;
+}
+
+.pedido-total {
+  margin-top: 0.2rem;
+  color: #b5563f;
+}
+
+.estado-badge {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-weight: 700;
+  color: white;
+}
+
+.estado-pendiente {
+  background: #b58a3f;
+}
+
+.estado-en_proceso {
+  background: #3f7bb5;
+}
+
+.estado-enviado {
+  background: #7a5cb5;
+}
+
+.estado-entregado {
+  background: #3f7d3a;
+}
+
+.estado-cancelado {
+  background: #c0392b;
+}
+
+.pedido-admin-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.pedido-admin-actions label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: #5a4638;
+}
+
+.pedido-admin-actions select {
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #e0c4ac;
+  font-family: inherit;
+}
+
+.pedido-admin-actions button {
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.pedidos-admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.filtro-estado {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #5a4638;
+}
+
+.filtro-estado select {
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #e0c4ac;
+  font-family: inherit;
+}
+
+/* Panel admin: pestañas */
+.admin-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.admin-tabs button {
+  border: 1px solid #f0d9c8;
+  background: #fff7f0;
+  color: #8a5638;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.admin-tabs button.activo {
+  background: #b5563f;
+  color: white;
+  border-color: #b5563f;
+}
