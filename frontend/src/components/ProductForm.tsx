@@ -40,10 +40,12 @@ const ProductForm = ({
   const [form, setForm] = useState<NuevoProducto>(valoresIniciales);
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [imagenRota, setImagenRota] = useState(false);
 
   useEffect(() => {
     setForm(productoEnEdicion ? productoAFormulario(productoEnEdicion) : valoresIniciales);
     setError(null);
+    setImagenRota(false);
   }, [productoEnEdicion]);
 
   const handleChange = (
@@ -54,6 +56,10 @@ const ProductForm = ({
     if (name === "categoriaId") {
       setForm((prev) => ({ ...prev, categoriaId: value ? Number(value) : null }));
       return;
+    }
+
+    if (name === "imagenUrl") {
+      setImagenRota(false);
     }
 
     setForm((prev) => ({
@@ -159,6 +165,20 @@ const ProductForm = ({
           placeholder="https://..."
         />
       </label>
+
+      {form.imagenUrl && (
+        <div className="image-preview">
+          {imagenRota ? (
+            <p className="image-preview-error">No se pudo cargar la imagen desde esa URL.</p>
+          ) : (
+            <img
+              src={form.imagenUrl}
+              alt="Vista previa del llavero"
+              onError={() => setImagenRota(true)}
+            />
+          )}
+        </div>
+      )}
 
       {error && <p className="error">{error}</p>}
 
